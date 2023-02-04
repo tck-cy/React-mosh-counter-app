@@ -2,20 +2,19 @@ import React, { Component } from "react";
 
 class Counter extends Component {
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log('prevProps', prevProps);
-    console.log('prevState', prevState);
-    if (prevProps.counter.value != this.props.counter.value) {
+ // componentDidUpdate(prevProps, prevState) {
+   // console.log('prevProps', prevProps);
+   // console.log('prevState', prevState);
+   // if (prevProps.counter.value != this.props.counter.value) {
       //Ajax for copy sitting classes
-    }
-  };
+   // }
+ // };
 
-  componentWillUnmount() {
-    console.log("Counter - Unmount");
-  }
-  
+ // componentWillUnmount() {
+  //  console.log("also works");
+ // }
+
   render() {
-    console.log('Counter - Rendered');
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
@@ -25,6 +24,7 @@ class Counter extends Component {
         >
           Increment
         </button>
+        <button onClick={() => this.props.onDecrement(this.props.counter)} className= "btn btn-success btn-sm m-2" >Decrement</button>
         <button
           onClick={() => this.props.onDelete(this.props.counter.id)}
           className="btn btn-danger btn-sm m-2"

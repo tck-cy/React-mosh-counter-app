@@ -15,11 +15,20 @@ class App extends Component {
 
  constructor(props) {
   super(props);
-  console.log('App - constructor');
+  console.log('constructor');
  };
 
  componentDidMount() {
-  console.log('App - Mounted');
+  console.log('did mount works');
+ };
+
+ handleDecrement = counter => {
+  console.log('Decrement works');
+  const counters = [...this.state.counters];
+  const index = counters.indexOf(counter);
+  counters[index] = { ...counter };
+  counters[index].value--;
+  this.setState({ counters });
  };
 
  handleIncrement = counter => {
@@ -44,12 +53,13 @@ class App extends Component {
  };
 
   render() { 
-    console.log('App - Rendered');
+    console.log('also works 2');
     return (
       <React.Fragment>
         <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length} />
         <main className="container" >
           <Counters 
+          onDecrement = { this.handleDecrement }
           counters = { this.state.counters }
           onReset={this.handleReset} 
           onIncrement={this.handleIncrement} 
